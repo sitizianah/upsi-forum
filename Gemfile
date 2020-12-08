@@ -29,3 +29,5 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
+gem 'jquery-rails', '~> 4.4'
+gem 'bootstrap', '~> 4.5', '>= 4.5.3'
