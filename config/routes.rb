@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+
+  get 'team', to: 'users#team', as: :team
+  get 'profile/:id', to: 'users#profile', as: :profile
   
   devise_scope :user do
     get '/users', to: 'devise/registrations#new'

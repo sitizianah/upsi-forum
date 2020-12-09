@@ -1,0 +1,29 @@
+<% provide(:page_title, "| Search People") %>
+<div class="container">
+   <div class="row justify-content-center">
+      <div class="table-responsive">
+         <table class="table">
+            <thead>
+               <tr>
+               <th scope="col">Name</th>
+               <th scope="col">Email</th>
+               </tr>
+            </thead>
+            <tbody>
+               <% @users.each do |user| %>
+               <tr>
+               <% if !user.name.blank? %>
+                  <td><%= link_to user.name, profile_path(user) %></td>
+               <% else %>
+                  <td>No Name Set</td>
+               <% end %>
+               <td><%= link_to user.email, profile_path(user) %></td>
+               </tr>
+               <% end %>
+            </tbody>
+         </table>
+      </div>
+      
+   </div>
+   <%= link_to "Back", root_path, :class=>"btn btn-info" %>
+</div>

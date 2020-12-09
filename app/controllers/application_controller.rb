@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
          :fb_link,
          :ig_link,
          :twitter_link,
-         :in_link
+         :in_link,
+         :profile_pic
       ])
    end
  end

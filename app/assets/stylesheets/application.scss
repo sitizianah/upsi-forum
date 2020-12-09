@@ -1,5 +1,9 @@
 @import "bootstrap";
 
+a, a:hover{
+	text-decoration: none;
+}
+
 .form-control{
 	border-radius: 0;
 }
@@ -38,3 +42,5 @@ nav{
 .-mt-6{
 	margin-top: -6px;
 }
+
+abbr{ display: none;}
