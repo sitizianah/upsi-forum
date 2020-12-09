@@ -3,14 +3,14 @@
     <div class="row justify-content-center">
       <div class="col-lg-12">
         <% @bugs.each do |bug| %>
-          <div class="card" style="width: 100%;">
+          <div class="card mb-2" style="width: 100%;">
             <div class="card-header">
               <div class="float-right">
                 <%= link_to bug, method: :delete,data: { confirm: 'Are you sure?' } do %>
                   <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
                 <% end %>
               </div>
-              <% if bug.user.name %>
+              <% if !bug.user.name.blank? %>
                 <%= bug.user.name %>
               <% else %>
                 <%= bug.user.email %>
@@ -23,7 +23,7 @@
             </ul>
           </div>
         <% end %>
-        <%= link_to "Submit a bug", new_bug_path, :class=>"btn btn-info mt-1"%>
+        <%= link_to "Submit a bug", new_bug_path, :class=>"btn btn-info mt-1 mb-2"%>
       </div>
     </div>
 </div>

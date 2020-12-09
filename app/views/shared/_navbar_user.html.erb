@@ -9,7 +9,7 @@
     <%= link_to "Home", root_path, :class=>"p-2 text-dark" %>
     <%= link_to "Members", team_path, :class=>"p-2 text-dark" %>
     <%= link_to "Contact", contacts_path, :class=>"p-2 text-dark" %>
-    <%= link_to "Submit Bug", bugs_path, :class=>"p-2 text-dark" %>
+    <%= link_to "Bug", bugs_path, :class=>"p-2 text-dark" %>
     <span class="px-2"></span>
     <%= link_to edit_user_registration_path,:class=>"p-2 text-dark" do %>
       <i class="far fa-user"></i>
@@ -20,7 +20,7 @@
       <i class="fas fa-sign-out-alt"></i>
       Log Out
       (
-         <% if current_user.name %>
+         <% if !current_user.name.blank? %>
             <%= current_user.name %>
          <% else %>
             <%= current_user.email %>

@@ -1,6 +1,6 @@
 <div id="answer-<%= answer.id %>">
    <div class="text-left">
-      <% if answer.user.name %>
+      <% if !answer.user.name.blank? %>
          <strong>
          <%= answer.user.name  %>
          </strong>

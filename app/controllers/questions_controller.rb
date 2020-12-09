@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.order('created_at DESC')
     @users = User.all.last(5)
   end
 

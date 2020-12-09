@@ -6,12 +6,12 @@
     </strong>
   </h5>
   <nav class="my-2 my-md-0 mr-md-3">
-    <a class="p-2 text-dark" href="#">Features</a>
-    <a class="p-2 text-dark" href="#">Enterprise</a>
-    <a class="p-2 text-dark" href="#">Support</a>
-    <a class="p-2 text-dark" href="#">Pricing</a>
+    <%= link_to "Home", root_path, :class=>"p-2 text-dark" %>
+    <%= link_to "Members", team_path, :class=>"p-2 text-dark" %>
+    <%= link_to "Contact", contacts_path, :class=>"p-2 text-dark" %>
+    <%= link_to "Bug", bugs_path, :class=>"p-2 text-dark" %>
   </nav>
-  <%= link_to "Login", new_user_session_path, :class=>"btn btn-outline-info" %>
+    <%= link_to "Login", new_user_session_path, :class=>"btn btn-outline-info" %>
   <span class="px-1"></span>
   <%= link_to "Sign up", new_user_registration_path, :class=>"btn btn-outline-primary" %>
 </div>

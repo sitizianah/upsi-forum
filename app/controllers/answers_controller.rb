@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
 		@answer = @question.answers.new(answer_params)
 		@answer.user = current_user
 		@answer.save
-		redirect_back(fallback_location: root_path)
+		redirect_to @question
 	end
 
 	def destroy

@@ -37,7 +37,7 @@
       </button>
     <% end %>
     <% @questions.each do |question| %>
-      <div class="card shadow">
+      <div class="card shadow mb-2">
         <div class="card-body">
           <div class="float-right">
             <%= link_to edit_question_path(question) do %>
@@ -52,7 +52,13 @@
             <% end %>
           </div>
           <p class="card-text lead"><strong><%= question.title %></strong></p>
-          <small class="text-muted">Asked by <span class="text-info"><%= link_to question.user.name, profile_path(question.user) %></span> at <%= question.created_at.strftime("%B, %d, %Y")%></small>
+          <small class="text-muted">Asked by <span class="text-info">
+          <% if !question.user.name.blank? %>
+            <%= link_to question.user.name, profile_path(question.user) %>
+          <% else %>
+            <%= link_to question.user.email, profile_path(question.user) %>
+          <% end %>
+          </span> at <%= question.created_at.strftime("%B, %d, %Y")%></small>
           <br>
           <span class="text-muted">
             <div class="badge badge-info"><i class="far fa-thumbs-up"></i> <%= question.get_upvotes.size %></div>

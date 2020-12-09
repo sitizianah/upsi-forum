@@ -1,9 +1,41 @@
-<% if current_user.contacts.count > 0 %>
+<% if current_user && current_user.admin? %>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-12">
+      <%= link_to "Contact", new_contact_path, :class=>"btn btn-info"%>
+        <p>All Contacts Log</p>
         <% @contacts.each do |contact| %>
-          <div class="card" style="width: 100%;">
+          <div class="card mb-2" style="width: 100%;">
+            <div class="card-header">
+              <div class="float-right">
+                <%= link_to contact, method: :delete,data: { confirm: 'Are you sure?' } do %>
+                  <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                <% end %>
+              </div>
+              <%= contact.created_at.strftime("%B, %d, %Y")%> by
+              <% if !contact.user.name.blank? %>
+                <%= contact.user.name %>
+              <% else %>
+                <%= contact.user.email %>
+              <% end %>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= contact.message%></li>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% else %>
+<% if !current_user.contacts.blank? %>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+      <%= link_to "Contact", new_contact_path, :class=>"btn btn-info"%>
+        <p>Your Contacts Log</p>
+        <% current_user.contacts.each do |contact| %>
+          <div class="card mb-2" style="width: 100%;">
             <div class="card-header">
               <div class="float-right">
                 <%= link_to contact, method: :delete,data: { confirm: 'Are you sure?' } do %>
@@ -20,17 +52,18 @@
       </div>
     </div>
   </div>
-<% end %>
 
-<% if current_user.contacts.count < 0 %>
+<% else %>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-12">
         <div class="alert alert-info" role="alert">
-          You haven't contacted the Admin yet!
+          Sorry we couldn't find any contact record!
       </div>
-      <%= link_to "Go, contact if necessary", new_contacts_path, :class=>"btn btn-info"%>
+        <%= link_to "Go, contact if necessary", new_contact_path, :class=>"btn btn-info"%>
       </div>
     </div>
   </div>
+<% end %>
+
 <% end %>
