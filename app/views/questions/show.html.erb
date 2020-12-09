@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-lg-11">
-      <div class="card">
+      <div class="card shadow">
         <div class="card-body">
           <div class="float-left">
           <%= link_to questions_path do %>
@@ -23,6 +23,37 @@
           <p class="text-center text-muted text-italic">Asked <%=time_ago_in_words(@question.created_at) %> ago</p>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-2">
+  <div class="row justify-content-center">
+    <div class="col-lg-11">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="question-answers">
+            <% @answers.each do |answer| %>
+              <div id="answer_pane">
+                <%= render 'answers/answer', answer: answer %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-2 mb-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-11">
+          <%= form_with model: [@question, @answer], remote: true do |f| %>
+					<%= f.text_area :body,:class=>"form-control",placeholder:'Answer',rows:5  %>
+					<%= f.submit "Answer",:class=>"btn btn-info mt-2", remote: true %>
+          <%= link_to "Back", root_path, :class=>"btn btn-primary mt-2"%>
+				<% end %>
+
     </div>
   </div>
 </div>

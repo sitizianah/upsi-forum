@@ -14,3 +14,14 @@ $(document).ready(function (){
 		})
 	},4500);
 });
+
+document.addEventListener("turbolinks:load", function() {
+	tinymce.remove();
+	tinymce.init({
+	  height: '250',
+	  selector:'textarea#answer_body',
+	  plugins: "codesample image media link code",
+	  branding: false,
+	  toolbar: "undo redo | styleselect | bold italic link | codesample image media | code"
+	});
+ })

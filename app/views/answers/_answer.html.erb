@@ -1,0 +1,22 @@
+<div id="answer-<%= answer.id %>">
+   <div class="text-left">
+      <% if answer.user.name %>
+         <strong>
+         <%= answer.user.name  %>
+         </strong>
+      <% else %>
+      <strong>
+         <%= answer.user.email %>
+         </strong>
+      <% end %>
+
+      <% if user_signed_in? %>
+         <% if current_user && current_user == answer.user || current_user.admin? %>
+            <%= link_to "Delete", question_answer_path(@question, answer), method: :delete, remote: true,:class=>"btn btn-sm btn-danger"%>
+         <% end %>
+      <% end %>
+      <br>
+      <span class="time"><%= time_ago_in_words(answer.created_at) %> ago</span>
+      <p class="text-justify"><%= answer.body.html_safe %></p>
+   </div>
+</div>
