@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @questions = Question.all.order('created_at DESC')
+    @questions = Question.all.order('created_at DESC').paginate(page: params[:page], per_page: 4)
     @users = User.all.last(5)
   end
 

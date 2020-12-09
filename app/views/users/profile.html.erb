@@ -1,4 +1,9 @@
-<% provide(:page_title, "| Account Page") %>
+<% if !@user.name.blank? %>
+   <% provide(:page_title, "#{@user.name}") %>
+<% else %>
+   <% provide(:page_title, "#{@user.email}") %>
+<% end %>
+
 <div class="container">
    <div class="row justify-content-center animated slideInDown delay-0.5s" style="margin-top: 6vh">
       <div class="col-lg-10">
