@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
-
-  #load_and_authorize_resource
-  #skip_authorize_resource :only => [:upvote, :downvote]
+ 
+  load_and_authorize_resource
+  skip_authorize_resource :only => [:upvote, :downvote]
 
   before_action :set_question, only: [:show, :edit, :update, :destroy,:upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]

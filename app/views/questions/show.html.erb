@@ -14,10 +14,20 @@
         </button>
       <% end %>
     </div>
-    <div class="float-right">
-      <%= link_to 'Edit', edit_question_path(@question),:class=>"btn btn-info" %>
-      <%= link_to 'Delete', question_path, method: :delete, data:{confirm: 'Are you sure?'},:class=>"btn btn-danger" %>
-    </div>
+
+    <% if user_signed_in? %>
+					<% if current_user && current_user == @question.user || current_user.admin? %>
+              <div class="float-right">
+                <% if can? :update, @question %>
+                  <%= link_to 'Edit', edit_question_path(@question),:class=>"btn btn-info" %>
+                <% end %>
+
+                <% if can? :destroy, @question %>
+                  <%= link_to 'Delete', question_path, method: :delete, data:{confirm: 'Are you sure?'},:class=>"btn btn-danger" %>
+                <% end %>
+              </div>
+          <% end %>
+      <% end %>
   </div>
   
 </div>
@@ -36,19 +46,23 @@
           <% end %>
 
           <p class="text-center text-muted text-italic">Asked <%=time_ago_in_words(@question.created_at) %> ago</p>
-          <div class="text-center">
-            <%= link_to like_question_path(@question), method: :put do %>
-							<button class="btn btn-primary btn-sm">
-								<i class="far fa-thumbs-up"></i> <%= @question.get_upvotes.size %>
-							</button>
-						<% end %>
+          <% if user_signed_in? %>
+            <% unless current_user && current_user == @question.user %>
+              <div class="text-center">
+                <%= link_to like_question_path(@question), method: :put do %>
+                  <button class="btn btn-primary btn-sm">
+                    <i class="far fa-thumbs-up"></i> <%= @question.get_upvotes.size %>
+                  </button>
+                <% end %>
 
-						<%= link_to dislike_question_path(@question), method: :put do %>
-							<button class="btn btn-primary btn-sm">
-								<i class="far fa-thumbs-down"></i> <%= @question.get_downvotes.size %>
-							</button>
-						<% end %>
-          </div>
+                <%= link_to dislike_question_path(@question), method: :put do %>
+                  <button class="btn btn-primary btn-sm">
+                    <i class="far fa-thumbs-down"></i> <%= @question.get_downvotes.size %>
+                  </button>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

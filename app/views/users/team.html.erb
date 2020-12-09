@@ -5,19 +5,40 @@
          <table class="table">
             <thead>
                <tr>
+               <th scope="col">Image</th>
                <th scope="col">Name</th>
                <th scope="col">Email</th>
+               <th scope="col">Role</th>
                </tr>
             </thead>
             <tbody>
                <% @users.each do |user| %>
                <tr>
-               <% if !user.name.blank? %>
-                  <td><%= link_to user.name, profile_path(user) %></td>
-               <% else %>
-                  <td>No Name Set</td>
-               <% end %>
-               <td><%= link_to user.email, profile_path(user) %></td>
+                  <td>
+                     <% if !user.profile_pic.blank? %>
+                        <%= link_to image_tag(user.profile_pic, :size=>"36x36",:class=>"rounded-circle"),profile_path(user) %>
+                     <% else %>
+                        <%= link_to image_tag('avatar.png', :size=>"36x36", :class=>"rounded-circle"), profile_path(user) %>
+                     <% end %>
+                  </td>
+
+                  <td>
+                     <% if !user.name.blank? %>
+                        <%= link_to user.name, profile_path(user) %>
+                     <% else %>
+                        No Name Set
+                     <% end %>
+                  </td>
+
+                  <td><%= link_to user.email, profile_path(user) %></td>
+
+                  <td>
+                     <% if user.admin? %>
+                        <span class="text-info">Admin</span>
+                     <% else %>
+                        User
+                     <% end %>
+                  </td>
                </tr>
                <% end %>
             </tbody>
@@ -25,5 +46,5 @@
       </div>
       
    </div>
-   <%= link_to "Back", root_path, :class=>"btn btn-info" %>
+   <%= link_to "Back", root_path, :class=>"btn btn-info -ml-2" %>
 </div>

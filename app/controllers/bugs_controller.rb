@@ -1,9 +1,12 @@
 class BugsController < ApplicationController
+
+  load_and_authorize_resource
+  
   before_action :set_bug, only: [:show, :destroy]
   before_action :authenticate_user!
 
   def index
-    @bugs = Bug.all
+    @bugs = Bug.all.order('created_at DESC')
   end
 
   def show

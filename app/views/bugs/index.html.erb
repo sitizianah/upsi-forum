@@ -5,11 +5,18 @@
         <% @bugs.each do |bug| %>
           <div class="card mb-2" style="width: 100%;">
             <div class="card-header">
-              <div class="float-right">
-                <%= link_to bug, method: :delete,data: { confirm: 'Are you sure?' } do %>
-                  <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+            <% if user_signed_in? %>
+						  <% if current_user && current_user == bug.user || current_user.admin? %>
+                <% if can? :destroy, bug %>
+                <div class="float-right">
+                    <%= link_to bug, method: :delete,data: { confirm: 'Are you sure?' } do %>
+                      <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                    <% end %>
+                  </div>
                 <% end %>
-              </div>
+              <% end %>
+            <% end %>
+
               <% if !bug.user.name.blank? %>
                 <%= bug.user.name %>
               <% else %>

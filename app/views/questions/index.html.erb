@@ -39,18 +39,29 @@
     <% @questions.each do |question| %>
       <div class="card shadow mb-2">
         <div class="card-body">
-          <div class="float-right">
-            <%= link_to edit_question_path(question) do %>
-              <button class="btn btn-info">
-                <i class="fas fa-pencil-alt"></i>
-              </button>
-            <% end %>
-            <%= link_to question, method: :delete,data: { confirm: 'Are you sure?' } do %>
-              <button class="btn btn-danger">
-                <i class="fas fa-minus-circle"></i>
-              </button>
-            <% end %>
-          </div>
+
+        <% if user_signed_in? %>
+					<% if current_user && current_user == question.user || current_user.admin? %>
+              <div class="float-right">
+                <% if can? :update, question %>
+                    <%= link_to edit_question_path(question) do %>
+                      <button class="btn btn-info">
+                        <i class="fas fa-pencil-alt"></i>
+                      </button>
+                    <% end %>
+                  <% end %>
+
+                <% if can? :destroy, question %>
+                  <%= link_to question, method: :delete,data: { confirm: 'Are you sure?' } do %>
+                    <button class="btn btn-danger">
+                      <i class="fas fa-minus-circle"></i>
+                    </button>
+                  <% end %>
+                <% end %>
+              </div>
+          <% end %>
+        <% end %>
+          
           <p class="card-text lead"><strong><%= question.title %></strong></p>
           <small class="text-muted">Asked by <span class="text-info">
           <% if !question.user.name.blank? %>
