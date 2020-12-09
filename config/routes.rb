@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :contacts
   resources :questions do
     member do
       put "like", to: "questions#upvote"
