@@ -1,0 +1,15 @@
+
+<%= simple_form_for(@bug) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :message, input_html:{:rows=>6}, label: "What problem are you facing?" %>
+    <%= f.association :user,as: :hidden %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Submit", :class=>"btn btn-info" %>
+    <%= link_to "Back", root_path, :class=>"btn btn-dark"%>
+  </div>
+<% end %>

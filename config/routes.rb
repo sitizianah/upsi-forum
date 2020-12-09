@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :bugs
   resources :contacts
   resources :questions do
     member do
