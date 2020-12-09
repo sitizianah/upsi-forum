@@ -21,6 +21,19 @@
             <%= image_tag(@question.image_link, :class=>"img-fluid rounded shadow", :size=>"520x650")%>
           </p>
           <p class="text-center text-muted text-italic">Asked <%=time_ago_in_words(@question.created_at) %> ago</p>
+          <div class="text-center">
+            <%= link_to like_question_path(@question), method: :put do %>
+							<button class="btn btn-primary btn-sm">
+								<i class="far fa-thumbs-up"></i> <%= @question.get_upvotes.size %>
+							</button>
+						<% end %>
+
+						<%= link_to dislike_question_path(@question), method: :put do %>
+							<button class="btn btn-primary btn-sm">
+								<i class="far fa-thumbs-down"></i> <%= @question.get_downvotes.size %>
+							</button>
+						<% end %>
+          </div>
         </div>
       </div>
     </div>
