@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="col-lg-3">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Total Members
+          <span class="badge bg-primary rounded-pill">
+            <%= User.all.count %>
+          </span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Totals Questions Asked
+          <span class="badge bg-primary rounded-pill"><%= Question.all.count %></span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Total Answers
+          <span class="badge bg-primary rounded-pill">1</span>
+        </li>
+      </ul>
+
+      <ul class="list-group mt-4">
+        <% @users.each do |user| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= user.email %>
+          </li>
+        <% end %>
+      </ul>
+      
+    </div>
+    <div class="col-lg-9">
+    <%= link_to new_question_path do %>
+      <button class="btn btn-success mb-2 shadow">
+        Ask a question
+      </button>
+    <% end %>
+    <% @questions.each do |question| %>
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="float-right">
+            <%= link_to edit_question_path(question) do %>
+              <button class="btn btn-info">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+            <% end %>
+            <%= link_to question, method: :delete,data: { confirm: 'Are you sure?' } do %>
+              <button class="btn btn-danger">
+                <i class="fas fa-minus-circle"></i>
+              </button>
+            <% end %>
+          </div>
+          <h2 class="card-text"><%= question.title %></h2>
+          <p class="text-muted">Asked by <span class="text-info"><%= question.user.name %></span> at <%= question.created_at.strftime("%B, %d, %Y")%></p>
+          <%= link_to question do %>
+            <button class="btn btn-primary btn-block">
+            <i class="fas fa-arrow-alt-circle-right"></i>
+            </button>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

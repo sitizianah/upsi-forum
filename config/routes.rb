@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :questions
   devise_for :users
   
   devise_scope :user do
@@ -6,6 +7,6 @@ Rails.application.routes.draw do
     get '/users/password', to: 'devise/passwords#new'
   end
 
-  root to: 'pages#home'
+  root to: 'questions#index'
 
 end

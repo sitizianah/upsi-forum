@@ -11,4 +11,5 @@ class User < ApplicationRecord
     message: "Must be a siswa account"
   }
 
+  has_many :questions
 end
