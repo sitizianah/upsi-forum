@@ -19,6 +19,7 @@ end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'letter_opener', '~> 1.7'
 end
 
 group :test do
@@ -32,3 +33,4 @@ gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'jquery-rails', '~> 4.4'
 gem 'bootstrap', '~> 4.5', '>= 4.5.3'
 gem 'simple_form', '~> 5.0', '>= 5.0.3'
+gem 'devise', '~> 4.7', '>= 4.7.3'

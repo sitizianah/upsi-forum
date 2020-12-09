@@ -1,0 +1,30 @@
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">
+    <%= image_tag('origami.png', :size=>"26x26", :class=>"img-fluid -mt-6")%>
+    <strong>
+      <%= link_to "UPSI Forum", root_path, :class=>"navbar-brand" %>  
+    </strong>
+  </h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <a class="p-2 text-dark" href="#">Features</a>
+    <a class="p-2 text-dark" href="#">Enterprise</a>
+    <a class="p-2 text-dark" href="#">Support</a>
+    <span class="px-2"></span>
+    <%= link_to edit_user_registration_path,:class=>"p-2 text-dark" do %>
+      <i class="far fa-user"></i>
+      Account Settings
+    <% end %>
+
+    <%= link_to destroy_user_session_path, method: :delete,:class=>"p-2 text-dark" do %>
+      <i class="fas fa-sign-out-alt"></i>
+      Log Out
+      (
+         <% if current_user.name %>
+            <%= current_user.name %>
+         <% else %>
+            <%= current_user.email %>
+         <% end %>
+      )
+    <% end %>
+  </nav>
+</div>

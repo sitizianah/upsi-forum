@@ -1,1 +1,40 @@
 @import "bootstrap";
+
+.form-control{
+	border-radius: 0;
+}
+.form-control:focus{
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+#notice_wrapper{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 999;
+	background: #651FFF;
+	.alert, .notice{
+		padding: 1.5rem 0;
+		text-align: center;
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 500;
+		color: #FFFFFF;
+		letter-spacing: 1px;
+	}
+}
+
+nav{
+	font-family: 'Pacifico', cursive;
+	color: #424242;
+}
+.navbar-brand, .navbar-brand:hover{
+	font-family: 'Pacifico', cursive;
+	color: #424242;
+}
+
+.-mt-6{
+	margin-top: -6px;
+}
