@@ -2,8 +2,8 @@
 <div class="container">
   <div class="row justify-content-center mt-4">
     <div class="col-lg-3">
-      <ul class="list-group shadow">
-      <span class="text-muted">STATS</span>
+    <span class="text-muted">STATS</span>
+      <ul class="list-group shadow mb-4">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Total Members
           <span class="badge bg-primary rounded-pill">
@@ -19,9 +19,8 @@
           <span class="badge bg-primary rounded-pill">1</span>
         </li>
       </ul>
-      
-      <ul class="list-group mt-4 shadow">
       <span class="text-muted">NEW USERS</span>
+      <ul class="list-group shadow mb-2">
         <% @users.each do |user| %>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <%= user.email %>
