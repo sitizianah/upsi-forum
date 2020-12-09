@@ -30,7 +30,7 @@
 
       <% if user_signed_in? %>
         <% if current_user && current_user.admin? %>
-          <button class="btn btn-info mt-2 btn-block">Go to Dashboard</button>
+          <%= link_to "Dashboard", rails_admin_path, :class=>"btn btn-info mt-2 btn-block"%>
         <% end %>
       <% end %>
       
