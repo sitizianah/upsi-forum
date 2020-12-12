@@ -1,12 +1,12 @@
 <% provide(:page_title, 'Create An Account') %>
 <div class="container">
   <div class="row justify-content-center" style="margin-top: 15vh">
-    <div class="col-lg-8">
+    <div class="col-lg-7">
           <div class="text-center">
         <%= image_tag('origami.png', :size=>"80x120", :class=>"img-fluid")%>
         <h1 class="mb-3">Sign Up - UPSI Forum</h1>
       </div>
-      <div class="card">
+      <div class="card rounded shadow">
         <div class="card-body">
           <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <%= f.error_notification %>
@@ -15,7 +15,7 @@
               <%= f.input :email,
                           required: true,
                           autofocus: true,
-                          input_html: { autocomplete: "email" }%>
+                          input_html: { autocomplete: "email"}%>
               <%= f.input :password,
                           required: true,
                           hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),

@@ -1,4 +1,7 @@
 @import "bootstrap";
+html,body{
+	background-color: #F5F5F5;
+}
 
 a, a:hover{
 	text-decoration: none;
@@ -9,9 +12,9 @@ a, a:hover{
 	border-radius: 0;
 }
 .form-control:focus{
-    border-color: #cccccc;
+		border-color: #cccccc;
     -webkit-box-shadow: none;
-    box-shadow: none;
+		box-shadow: none;
 }
 
 #notice_wrapper{

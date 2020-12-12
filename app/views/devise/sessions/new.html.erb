@@ -1,12 +1,12 @@
 <% provide(:page_title, 'Sign in to your account') %>
 <div class="container">
   <div class="row justify-content-center" style="margin-top: 15vh">
-    <div class="col-lg-8">
+    <div class="col-lg-6">
       <div class="text-center">
         <%= image_tag('origami.png', :size=>"80x120", :class=>"img-fluid")%>
         <h1 class="mb-3">Login - UPSI Forum</h1>
       </div>
-      <div class="card">
+      <div class="card rounded shadow">
         <div class="card-body">
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-inputs">

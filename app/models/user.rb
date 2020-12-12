@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable, :confirmable
 
   def account_active
-    blocked_at.nil?
+    locked_at.nil?
   end
 
   def active_for_authentication?

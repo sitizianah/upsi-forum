@@ -17,6 +17,6 @@
       <% end %>
       <br>
       <span class="time"><%= time_ago_in_words(answer.created_at) %> ago</span>
-      <p class="text-justify"><%= answer.body.html_safe %></p>
+      <p class="text-justify"><pre><%= answer.body.html_safe %></pre></p>
    </div>
 </div>
