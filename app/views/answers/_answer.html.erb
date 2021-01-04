@@ -2,11 +2,11 @@
    <div class="text-left">
       <% if !answer.user.name.blank? %>
          <strong>
-         <%= answer.user.name  %>
+         <%= link_to answer.user.name, profile_path(answer.user)  %>
          </strong>
       <% else %>
       <strong>
-         <%= answer.user.email %>
+         <%= link_to answer.user.email, profile_path(answer.user) %>
          </strong>
       <% end %>
 
@@ -17,6 +17,6 @@
       <% end %>
       <br>
       <span class="time"><%= time_ago_in_words(answer.created_at) %> ago</span>
-      <p class="text-justify"><pre><%= answer.body.html_safe %></pre></p>
+      <p class="text-justify"><%= answer.body.html_safe %></p>
    </div>
 </div>

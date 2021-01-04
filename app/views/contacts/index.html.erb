@@ -1,9 +1,13 @@
 <% provide(:page_title, 'Browse Contact Logs') %>
+<% if user_signed_in? %>
+  <%= render 'shared/navbar_user' %>
+<% else %>
+  <%= render 'shared/navbar_public' %>
+<% end %>
 <% if current_user && current_user.admin? %>
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-12">
-      <%= link_to "Contact", new_contact_path, :class=>"btn btn-info"%>
         <p>All Contacts Log</p>
         <% @contacts.each do |contact| %>
           <div class="card mb-2" style="width: 100%;">

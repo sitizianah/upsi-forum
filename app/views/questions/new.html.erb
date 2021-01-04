@@ -1,5 +1,9 @@
 <% provide(:page_title, 'Ask A Question') %>
-
+<% if user_signed_in? %>
+  <%= render 'shared/navbar_user' %>
+<% else %>
+  <%= render 'shared/navbar_public' %>
+<% end %>
 <div class="container">
    <div class="row justify-content-center" style="margin-top: 10vh">
       <div class="col-lg-10">

@@ -4,7 +4,7 @@
     <title>Forum | <%= yield(:page_title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag ('origami.png') %>
+    <%= favicon_link_tag("origami.png") %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -15,11 +15,6 @@
   </head>
   <body>
     <%= render 'shared/alert' %>
-    <% if user_signed_in? %>
-      <%= render 'shared/navbar_user' %>
-    <% else %>
-      <%= render 'shared/navbar_public' %>
-    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,4 +1,9 @@
 <% provide(:page_title, 'Browse All Questions') %>
+<% if user_signed_in? %>
+  <%= render 'shared/navbar_user' %>
+<% else %>
+  <%= render 'shared/navbar_public' %>
+<% end %>
 <div class="container">
   <div class="row justify-content-center mt-4">
     <div class="col-lg-3">

@@ -1,4 +1,9 @@
 <% provide(:page_title, "#{@question.title}") %>
+<% if user_signed_in? %>
+  <%= render 'shared/navbar_user' %>
+<% else %>
+  <%= render 'shared/navbar_public' %>
+<% end %>
 <div class="container-fluid">
 <div class="row justify-content-center">
   <div class="col-lg-11 mb-2">

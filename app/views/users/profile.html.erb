@@ -4,6 +4,12 @@
    <% provide(:page_title, "#{@user.email}") %>
 <% end %>
 
+<% if user_signed_in? %>
+  <%= render 'shared/navbar_user' %>
+<% else %>
+  <%= render 'shared/navbar_public' %>
+<% end %>
+
 <div class="container">
    <div class="row justify-content-center animated slideInDown delay-0.5s" style="margin-top: 6vh">
       <div class="col-lg-10">
@@ -63,29 +69,37 @@
                      
                   <!-- Social Media Links -->
                   <div class="social-links text-center">
-                     <%= link_to "#{@user.fb_link}",:target=>"_blank" do %>
-                        <button class="btn btn-light">
-                           <i class="fab fa-facebook-f"></i>
-                        </button>
+                   <% if !current_user.fb_link.blank? %>
+                        <%= link_to "#{@user.fb_link}",:target=>"_blank" do %>
+                           <button class="btn btn-light">
+                              <i class="fab fa-facebook"></i>
+                           </button>
+                        <% end %>
                      <% end %>
 
-                     <%= link_to "#{@user.twitter_link}",:target=>"_blank" do %>
-                        <button class="btn btn-light">
-                           <i class="fab fa-twitter"></i>
-                        </button>
+                     <% if !current_user.twitter_link.blank? %>
+                        <%= link_to "#{@user.twitter_link}",:target=>"_blank" do %>
+                           <button class="btn btn-light">
+                              <i class="fab fa-twitter"></i>
+                           </button>
+                        <% end %>
                      <% end %>
 
+                  <% if !current_user.ig_link.blank? %>
                      <%= link_to "#{@user.ig_link}",:target=>"_blank" do  %>
                         <button class="btn btn-light">
                            <i class="fab fa-instagram"></i>
                         </button>
                      <% end %>
+                  <% end %>
 
+                  <% if !current_user.in_link.blank? %>
                      <%= link_to "#{@user.in_link}",:target=>"_blank" do %>
                         <button class="btn btn-light">
                            <i class="fab fa-linkedin-in"></i>
                         </button>
                      <% end %>
+                  <% end %>
                   </div>
                   <!-- / Social Media Links -->
                </div>

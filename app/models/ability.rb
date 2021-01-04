@@ -19,10 +19,6 @@ class Ability
         can :destroy, Contact, user_id: user.id
         can :read, Contact
         can :create, Contact
-
-        can :destroy, Bug, user_id: user.id
-        can :read, Bug
-        can :create, Bug
     end
   end
 end

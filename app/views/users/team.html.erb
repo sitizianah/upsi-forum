@@ -1,6 +1,12 @@
 <% provide(:page_title, "Community") %>
+
+<% if user_signed_in? %>
+  <%= render 'shared/navbar_user' %>
+<% else %>
+  <%= render 'shared/navbar_public' %>
+<% end %>
 <div class="container">
-   <div class="row justify-content-center">
+   <div class="row justify-content-center" style="margin-top: 15vh">
       <div class="table-responsive">
          <table class="table">
             <thead>
